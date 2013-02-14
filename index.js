@@ -7,14 +7,27 @@ void function(root, factory){
       define(['sort_by'], factory)
   } else {
     var sort_by = factory()
-    Array.prototype.sort_by = function(cb){
-      return sort_by(this, cb)
-    }
+    sort_by.bind$()
   }
 }(this, function(){
 
-  var isArray = Array.isArray || function(x){
-    return Object.prototype.toString.call(x) == '[object Array]'
+  sort_by.bindToNative = function(){
+    if(!Array.prototype.sort_by)
+      Array.prototype.sort_by = function(cb){
+        return sort_by(this, cb)
+      }
+  }
+
+  sort_by.bind$ = function(){
+    sort_by.bindToNative()
+
+    //like native sort(), sorts in-place and returns undefined
+    if(!Array.prototype.sort_by$)
+      Array.prototype.sort_by$ = function(cb){
+        var sorted = this.sort_by(cb)
+        for(var i = 0, l = this.length ; i < l ; i++)
+          this[i] = sorted[i]
+      }
   }
 
   return sort_by
@@ -27,6 +40,7 @@ void function(root, factory){
       return [schwartz_value, item]
     });
 
+    // assume that all types are the same
     schwartzed.sort(function(x, y){
       if(Array.isArray(x))
         return compare_arrays(x[0], y[0])

@@ -1,4 +1,4 @@
 sort_by
 =======
 
-Schwartzian transform for js or node
+Schwartzian transform for js
