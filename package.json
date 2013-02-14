@@ -1,0 +1,15 @@
+{
+  "name": "sort_by",
+  "version": "0.0.0",
+  "description": "Schwartzian transform for js or node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {
+    "tape": "~0.2.2"
+  }
+}
