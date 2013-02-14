@@ -21,35 +21,28 @@ void function(root, factory){
   sort_by.bind$ = function(){
     sort_by.bindToNative()
 
-    //like native sort(), sorts in-place and returns undefined
+    //like native sort(), sorts in-place 
     if(!Array.prototype.sort_by$)
       Array.prototype.sort_by$ = function(cb){
         var sorted = this.sort_by(cb)
         for(var i = 0, l = this.length ; i < l ; i++)
           this[i] = sorted[i]
+        return this
       }
   }
 
   return sort_by
 
   function sort_by(arr, cb){
-    var schwartzed = arr.map(function(item){
+    var comparison = null
+    return arr.map(function(item){
       var schwartz_value = cb(item)
-      if(!Array.isArray(schwartz_value))
-        throw new Error('Callback must return an array')
+      if(!comparison)
+        comparison = Array.isArray(schwartz_value) ? compare_arrays : compare
       return [schwartz_value, item]
-    });
-
-    // assume that all types are the same
-    schwartzed.sort(function(x, y){
-      if(Array.isArray(x))
-        return compare_arrays(x[0], y[0])
-      else
-        return compare(x[0], x[1])
-    });
-
-
-    return schwartzed.map(function(item){
+    }).sort(function(x, y){
+      return comparison(x[0], y[0])
+    }).map(function(item){
       return item[1]
     })
   }

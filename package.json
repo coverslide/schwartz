@@ -1,13 +1,13 @@
 {
   "name": "sort_by",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Schwartzian transform for js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
-  "repository": "",
-  "author": "",
+  "repository": "https://github.com/coverslide/sort_by",
+  "author": "Richard Hoffman",
   "license": "BSD",
   "devDependencies": {
     "tape": "~0.2.2"
