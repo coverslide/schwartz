@@ -30,7 +30,7 @@ test('native binding', function(t){
 
   var unsorted_link = unsorted
 
-  sort_by.bind$()
+  sort_by.bindToNative()
 
   var sorted = unsorted.sort_by(idsort)
 
@@ -40,13 +40,11 @@ test('native binding', function(t){
 
   t.notEqual(sorted, unsorted_link, 'should be different objects')
 
-  unsorted.sort_by$(idsort)
+  unsorted = unsorted.sort_by(idsort)
 
   t.equal(unsorted[0].id, 2, 'test value 0')
   t.equal(unsorted[1].id, 5, 'test value 1')
   t.equal(unsorted[2].id, 10, 'test value 2')
-
-  t.equal(unsorted, unsorted_link, 'should be the same object')
 
   t.end()
 })
