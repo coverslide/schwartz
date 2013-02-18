@@ -7,7 +7,7 @@ void function(root, factory){
       define(['sort_by'], factory)
   } else {
     var sort_by = factory()
-    sort_by.bind$()
+    sort_by.bindToNative()
   }
 }(this, function(){
 
@@ -15,19 +15,6 @@ void function(root, factory){
     if(!Array.prototype.sort_by)
       Array.prototype.sort_by = function(cb){
         return sort_by(this, cb)
-      }
-  }
-
-  sort_by.bind$ = function(){
-    sort_by.bindToNative()
-
-    //like native sort(), sorts in-place 
-    if(!Array.prototype.sort_by$)
-      Array.prototype.sort_by$ = function(cb){
-        var sorted = this.sort_by(cb)
-        for(var i = 0, l = this.length ; i < l ; i++)
-          this[i] = sorted[i]
-        return this
       }
   }
 
@@ -57,6 +44,8 @@ void function(root, factory){
   }
 
   function compare(a, b){
+    if(typeof a == 'string' || typeof b == 'string')
+      a=''+a,b=''+b
     return a < b ? -1 :  a > b ? 1 : 0
   }
 
