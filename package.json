@@ -1,12 +1,12 @@
 {
-  "name": "sort_by",
-  "version": "0.0.2",
+  "name": "schwartz",
+  "version": "0.1.0",
   "description": "Schwartzian transform for js",
-  "main": "index.js",
+  "main": "schwartz.js",
   "scripts": {
     "test": "node test"
   },
-  "repository": "https://github.com/coverslide/sort_by",
+  "repository": "https://github.com/coverslide/schwartz",
   "author": "Richard Hoffman",
   "license": "BSD",
   "devDependencies": {

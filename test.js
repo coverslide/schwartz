@@ -1,5 +1,5 @@
 var test = require('tape')
-var sort_by = require('./')
+var schwartz = require('./schwartz.js')
 
 test('basic sorting', function(t){
   var unsorted = [
@@ -10,7 +10,7 @@ test('basic sorting', function(t){
     , {id: 10}
   ]
 
-  var sorted = sort_by(unsorted, idsort)
+  var sorted = schwartz(unsorted, idsort)
 
   t.equal(sorted[0].id, 2, 'test value 0')
   t.equal(sorted[1].id, 5, 'test value 1')
@@ -30,9 +30,9 @@ test('native binding', function(t){
 
   var unsorted_link = unsorted
 
-  sort_by.bindToNative()
+  schwartz.useDaSchwartz()
 
-  var sorted = unsorted.sort_by(idsort)
+  var sorted = unsorted.schwartz(idsort)
 
   t.equal(sorted[0].id, 2, 'native test value 0')
   t.equal(sorted[1].id, 5, 'native test value 1')
@@ -40,7 +40,7 @@ test('native binding', function(t){
 
   t.notEqual(sorted, unsorted_link, 'should be different objects')
 
-  unsorted = unsorted.sort_by(idsort)
+  unsorted = unsorted.schwartz(idsort)
 
   t.equal(unsorted[0].id, 2, 'test value 0')
   t.equal(unsorted[1].id, 5, 'test value 1')
