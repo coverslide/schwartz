@@ -64,6 +64,7 @@ void function (root, factory) {
         return 0;
     }
 
+    schwartz.compare = compare;
     schwartz.compareArrays = compareArrays;
 
     schwartz.bindToNative = function(){
