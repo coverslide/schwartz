@@ -73,6 +73,7 @@ test('array comparison', function(t){
     t.equal(sorted[4][1], 5);
 
     t.deepEqual(sorted, sorted2)
+    t.end();
 });
 
 function idsort(x){
